@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { CarServices } from './car.services';
 
+// create a new car request and response
 const createCar = async (req: Request, res: Response) => {
   try {
     const cars = req.body;
@@ -19,6 +20,7 @@ const createCar = async (req: Request, res: Response) => {
   }
 };
 
+// get all cars request and response
 const getCar = async (req: Request, res: Response) => {
   try {
     const result = await CarServices.findCarDB();
@@ -36,6 +38,7 @@ const getCar = async (req: Request, res: Response) => {
   }
 };
 
+// get single cars request and response
 const getSingleCar = async (req: Request, res: Response) => {
   try {
     const id = req.params.carId;
@@ -54,8 +57,38 @@ const getSingleCar = async (req: Request, res: Response) => {
   }
 };
 
+// update single cars request and response
+const updateSingleCar = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.carId;
+    const { price, quantity } = req.body;
+
+    const updatedCar = {
+      $set: {
+        price,
+        quantity,
+        updatedAt: Date.now(),
+      },
+    };
+
+    const result = await CarServices.updateSingleCarDB(id, updatedCar);
+    res.status(200).json({
+      message: 'Car updated successfully',
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Failed to update car',
+      success: false,
+      error,
+    });
+  }
+};
+
 export const CarController = {
   createCar,
   getCar,
   getSingleCar,
+  updateSingleCar,
 };

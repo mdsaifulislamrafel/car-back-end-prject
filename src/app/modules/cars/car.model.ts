@@ -18,11 +18,10 @@ const CarSchema = new Schema<TCars>({
   quantity: { type: Number, required: true },
   inStock: { type: Boolean, required: true },
   createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date },
 });
 
-// CarSchema.post("save", function(next){
 
-// })
 
 // Create and export the Mongoose model
 export const CarModel = model<TCars>('Car', CarSchema);
