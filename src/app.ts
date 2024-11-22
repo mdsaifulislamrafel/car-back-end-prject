@@ -1,8 +1,17 @@
-import express, { Application } from 'express';
-const app: Application = express()
+import express, { Application, Request, Response } from 'express';
+import cors from 'cors';
+import { CarRoutes } from './app/modules/cars/car.routes';
+const app: Application = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// middleware
+app.use(express.json());
+app.use(cors());
+
+// routes
+app.use('/', CarRoutes);
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('hello world');
+});
 
 export default app;

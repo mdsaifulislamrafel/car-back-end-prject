@@ -1,6 +1,6 @@
 export type TCarCategory = 'Sedan' | 'SUV' | 'Truck' | 'Coupe' | 'Convertible';
 
-export type TCar = {
+export interface TCars {
   brand: string;
   model: string;
   year: number;
@@ -9,4 +9,5 @@ export type TCar = {
   description: string;
   quantity: number;
   inStock: boolean;
-};
+  createdAt: Date;
+}
