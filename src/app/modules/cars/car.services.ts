@@ -22,10 +22,17 @@ const findSingleCarDB = async (carId: string) => {
 
 // update single car database
 const updateSingleCarDB = async (id: string, updateData: UpdateQuery<TCars>) => {
-  return await CarModel.findByIdAndUpdate(id, updateData, { new: true });
+  const res = await CarModel.findByIdAndUpdate(id, updateData, { new: true });
+  return res;
 };
 
 // delete single car database
+
+const deleteSingleCarDB = async (carId: string) => {
+  const res = await CarModel.findByIdAndDelete(carId);
+  return res;
+};
+
 
 
 
@@ -34,4 +41,5 @@ export const CarServices = {
   findCarDB,
   findSingleCarDB,
   updateSingleCarDB,
+  deleteSingleCarDB,
 };

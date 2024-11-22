@@ -9,5 +9,7 @@ router.get('/api/cars', CarController.getCar);
 router.get('/api/cars/:carId', CarController.getSingleCar);
 // car update single api routes
 router.put('/api/cars/:carId', CarController.updateSingleCar);
+// car delete single api routes
+router.delete('/api/cars/:carId', CarController.deleteSingleCar);
 
 export const CarRoutes = router;
