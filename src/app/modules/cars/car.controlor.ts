@@ -36,7 +36,26 @@ const getCar = async (req: Request, res: Response) => {
   }
 };
 
+const getSingleCar = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.carId;
+    const result = await CarServices.findSingleCarDB(id);
+    res.status(200).json({
+      message: 'Car retrieved successfully',
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Failed to get car',
+      success: false,
+      error,
+    });
+  }
+};
+
 export const CarController = {
   createCar,
   getCar,
+  getSingleCar,
 };

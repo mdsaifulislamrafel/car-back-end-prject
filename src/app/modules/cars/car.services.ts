@@ -9,9 +9,15 @@ const createCarDB = async (carData: TCars) => {
 const findCarDB = async () => {
   const res = await CarModel.find();
   return res;
-}
+};
+
+const findSingleCarDB = async (carId: string) => {
+  const res = await CarModel.findById(carId);
+  return res;
+};
 
 export const CarServices = {
   createCarDB,
   findCarDB,
+  findSingleCarDB,
 };
