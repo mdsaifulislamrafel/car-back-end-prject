@@ -21,7 +21,5 @@ const CarSchema = new Schema<TCars>({
   updatedAt: { type: Date },
 });
 
-
-
 // Create and export the Mongoose model
 export const CarModel = model<TCars>('Car', CarSchema);

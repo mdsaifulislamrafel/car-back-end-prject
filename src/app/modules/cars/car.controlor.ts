@@ -1,11 +1,14 @@
 import { Request, Response } from 'express';
 import { CarServices } from './car.services';
+import CarValidation from './car.validation';
 
 // create a new car request and response
 const createCar = async (req: Request, res: Response) => {
   try {
     const cars = req.body;
-    const result = await CarServices.createCarDB(cars);
+    // zod validation added for car
+    const validationCar = CarValidation.parse(cars)
+    const result = await CarServices.createCarDB(validationCar);
     res.status(200).json({
       message: 'Car created successfully',
       success: true,

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { OrderModel } from './order.model';
 import { CarModel } from '../cars/car.model';
+import validationOrder from './order.validation';
 
 export const createOrder = async (orderData: any) => {
   const { email, car, quantity, totalPrice } = orderData;
@@ -16,13 +17,17 @@ export const createOrder = async (orderData: any) => {
   }
 
   // Reduce inventory
+  // গাড়ির স্টক (quantity) চাহিদা অনুযায়ী হ্রাস করে।
   carData.quantity -= quantity;
+  // চেক করে যদি স্টক 0 এর চেয়ে বেশি থাকে, তাহলে inStock প্রপার্টিকে true করে, অন্যথায় false।
   carData.inStock = carData.quantity > 0;
 
   await carData.save();
 
+  // zod validation added for order
+  const orderValidation = validationOrder.parse({email, car, quantity, totalPrice})
   // Create the order
-  const order = await OrderModel.create({ email, car, quantity, totalPrice });
+  const order = await OrderModel.create(orderValidation);
   return order;
 };
 

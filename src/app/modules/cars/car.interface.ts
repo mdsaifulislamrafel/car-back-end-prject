@@ -10,5 +10,5 @@ export interface TCars {
   quantity: number;
   inStock: boolean;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date | undefined;
 }
