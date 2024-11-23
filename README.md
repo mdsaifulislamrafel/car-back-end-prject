@@ -2,7 +2,7 @@
 ##### Project Setup
 The Car Store API is an Express-based TypeScript application using MongoDB and Mongoose for schema definition and data operations. It provides CRUD operations for cars and orders while ensuring data integrity with schema validation.
 
-# Models
+### Models
 * brand (string): Manufacturer of the car (e.g., Toyota, BMW).
 * model (string): Car model (e.g., Camry, 3 Series).
 * year (number): Year of manufacture.
@@ -11,15 +11,15 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 * description (string): Brief description of the car.
 * quantity (number): Available stock (must be positive).
 * inStock (boolean): Whether the car is in stock.
-# Order Model
+### Order Model
 * email (string): Customer email (validated format).
 * car (ObjectId): Reference to a car in the database.
 * quantity (number): Quantity ordered (must be positive).
 * totalPrice (number): Calculated as car.price * quantity.
 
-# API Endpoints
+### API Endpoints
 
-# 1. Create a Car
+#### 1. Create a Car
 * Endpoint: /api/cars
 * Method: POST
 * Request Body Example:
@@ -53,7 +53,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 
 ```
 
-# 2. Get All Cars
+#### 2. Get All Cars
 * Endpoint: /api/cars
 * Method: GET
 * Query Parameters: searchTerm (optional for brand, model, or category).
@@ -74,7 +74,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 }
 
 ```
-# 3. Get a Specific Car
+#### 3. Get a Specific Car
 * Endpoint: /api/cars/:carId
 * Method: GET
 * Response Example:
@@ -92,7 +92,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 
 ```
 
-# 4. Update a Car
+#### 4. Update a Car
 * Endpoint: /api/cars/:carId
 * Method: PUT
 * Request Body Example:
@@ -118,7 +118,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 
 ```
 
-# 5. Delete a Car
+#### 5. Delete a Car
 * Endpoint: /api/cars/:carId
 * Method: DELETE
 * Response Example:
@@ -132,7 +132,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 
 ```
 
-# 6. Order a Car
+#### 6. Order a Car
 * Endpoint: /api/orders
 * Method: POST
 * Request Body Example:
@@ -166,7 +166,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 * If quantity === 0, set inStock: false.
 * Return an error if stock is insufficient.
 
-# 7. Calculate Revenue
+#### 7. Calculate Revenue
 * Endpoint: /api/orders/revenue
 * Method: GET
 * Response Example:
@@ -182,7 +182,7 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 
 ```
 
-# Error Handling
+#### Error Handling
 * Validation Errors:
 
 ``` text 
