@@ -209,5 +209,6 @@ The Car Store API is an Express-based TypeScript application using MongoDB and M
 * Clone the repository.
 * Install dependencies: **`npm install`**.
 * Create a **`.env`** file with MongoDB URI and port.
+* Build the Project Compile TypeScript into JavaScript using the following command: **`npm run build`**
 * Run the server: **`npm run dev`**.
 * Test endpoints using Postman or any REST client.
